@@ -141,7 +141,7 @@
          <center>
             <AnchorPane prefHeight="584.0" prefWidth="922.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="pane_staff" prefHeight="582.0" prefWidth="998.0" visible="false">
+                  <AnchorPane fx:id="pane_staff" prefHeight="582.0" prefWidth="998.0">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="24.0" prefHeight="550.0" prefWidth="293.0" styleClass="bg-white">
                            <children>
@@ -412,7 +412,7 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="pane_ticketbook" layoutX="-1.0" layoutY="-6.0" prefHeight="598.0" prefWidth="1009.0">
+                  <AnchorPane fx:id="pane_ticketbook" layoutX="-1.0" layoutY="-6.0" prefHeight="598.0" prefWidth="1009.0" visible="false">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="24.0" prefHeight="550.0" prefWidth="293.0" styleClass="bg-white">
                            <children>

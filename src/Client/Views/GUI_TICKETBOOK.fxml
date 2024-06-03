@@ -151,7 +151,7 @@
          <center>
             <AnchorPane prefHeight="556.0" prefWidth="982.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="mode_home" prefHeight="764.0" prefWidth="982.0" visible="false">
+                  <AnchorPane fx:id="mode_home" prefHeight="764.0" prefWidth="982.0">
                      <children>
                         <AnchorPane layoutX="14.0" prefHeight="278.0" prefWidth="966.0">
                            <children>
@@ -315,7 +315,7 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="mode_book" prefHeight="769.0" prefWidth="983.0">
+                  <AnchorPane fx:id="mode_book" prefHeight="769.0" prefWidth="983.0" visible="false">
                      <children>
                         <AnchorPane layoutX="32.0" layoutY="56.0" prefHeight="278.0" prefWidth="923.0" styleClass="bg-white">
                            <children>
