@@ -122,7 +122,7 @@ class ClientHandler extends Thread {
                 }
                 else if(request.startsWith("DELETEFLIMS")){
                     request = input.readLine();
-                    deleteFlims(request);
+                    deleteFlimAndRelatedTickets(request);
                     output.println("đã nhận dữ liệu");
                 }else if(request.startsWith("DELETEDrinkAndFood")){
                     request = input.readLine();
@@ -716,25 +716,70 @@ class ClientHandler extends Thread {
             e.printStackTrace();
         }
     }
-    public void deleteFlims(String flimid) {
+    public void deleteFlimAndRelatedTickets(String flimid) {
         Database database = new Database();
         Connection connection = database.getConection();
         try {
-            // Xóa hàng trong bảng Flim
-            String deleteFlims = "DELETE FROM flim WHERE `ID flim` = ?";
-            try (PreparedStatement preStaff = connection.prepareStatement(deleteFlims)) {
-                preStaff.setString(1, flimid);
-                int rowsAffected = preStaff.executeUpdate();
-                if (rowsAffected > 0) {
-                    System.out.println("Xóa phim thành công");
-                } else {
-                    System.out.println("Không tìm thấy phim để xóa");
+            connection.setAutoCommit(false);
+
+            String flimName = null;
+            String getFlimNameQuery = "SELECT `Tên Phim` FROM flim WHERE `ID flim` = ?";
+            try (PreparedStatement preFlimName = connection.prepareStatement(getFlimNameQuery)) {
+                preFlimName.setString(1, flimid);
+                try (ResultSet resultSet = preFlimName.executeQuery()) {
+                    if (resultSet.next()) {
+                        flimName = resultSet.getString("Tên phim");
+                        System.out.println(flimName);
+                    }
                 }
             }
+
+            if (flimName != null) {
+                // Xóa các bản vé phim liên quan
+                String deleteTickets = "DELETE FROM `vé phim` WHERE `Tên phim` = ?";
+                try (PreparedStatement preTicket = connection.prepareStatement(deleteTickets)) {
+                    preTicket.setString(1, flimName);
+                    int rowsAffectedTickets = preTicket.executeUpdate();
+                    // Tiếp tục chỉ xóa phim nếu việc xóa vé phim thành công
+                    if (rowsAffectedTickets > 0) {
+                        String deleteFlim = "DELETE FROM flim WHERE `ID flim` = ?";
+                        try (PreparedStatement preFlim = connection.prepareStatement(deleteFlim)) {
+                            preFlim.setString(1, flimid);
+                            int rowsAffectedFlim = preFlim.executeUpdate();
+                            if (rowsAffectedFlim > 0) {
+                                System.out.println("Đã xóa phim '" + flimName + "' và các vé phim liên quan thành công");
+                            } else {
+                                System.out.println("Không tìm thấy phim để xóa");
+                            }
+                        }
+                    } else {
+                        System.out.println("Không tìm thấy vé phim để xóa");
+                    }
+                }
+            } else {
+                System.out.println("Không tìm thấy phim với ID: " + flimid);
+            }
+
+            // Nếu mọi thứ thành công, commit transaction
+            connection.commit();
         } catch (SQLException e) {
+            // Nếu có lỗi, rollback transaction
+            try {
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
             e.printStackTrace();
+        } finally {
+            try {
+                // Trả lại chế độ tự động commit cho connection
+                connection.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+
 
     public void updateFLims(ObservableList<Flim> data) {
         Database database = new Database();
