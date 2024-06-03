@@ -67,6 +67,16 @@ class ClientHandler extends Thread {
                     }
                     updateFoodAndDrink(foodDrinkObservableList);
                     output.println("đã nhận dữ liệu");
+                }else if(request.startsWith("updatesFoodAndDrink")){
+                    ObservableList<Food_Drink> foodDrinkObservableList = FXCollections.observableArrayList();
+                    request = input.readLine();
+                    String[] data = request.split(";");
+                    if (data.length == 5) {
+                        Food_Drink food_drink = new Food_Drink(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4]);
+                        foodDrinkObservableList.add(food_drink);
+                    }
+                    updatesFoodAndDrink(foodDrinkObservableList);
+                    output.println("đã nhận dữ liệu");
                 }else if(request.startsWith("UPDATETICKETFLIMS")){
                     ObservableList<TicketFlim> ticketFlimObservableList = FXCollections.observableArrayList();
                     request = input.readLine();
@@ -86,6 +96,16 @@ class ClientHandler extends Thread {
                         payObservableList.add(pays);
                     }
                     updateDrink(payObservableList);
+                    output.println("đã nhận dữ liệu");
+                }else if(request.startsWith("UPVESGHE")){
+                    ObservableList<TicketFlim> ticketFlimObservableList = FXCollections.observableArrayList();
+                    request = input.readLine();
+                    String[] data = request.split(";");
+                    if (data.length == 7) {
+                        TicketFlim ticketFlim = new TicketFlim(Integer.parseInt(data[0]),data[1],Integer.parseInt(data[2]),data[3],data[4],data[5],data[6]);
+                        ticketFlimObservableList.add(ticketFlim);
+                    }
+                    updatesTicketFlims(ticketFlimObservableList);
                     output.println("đã nhận dữ liệu");
                 }else if(request.startsWith("UPPAY")){
                     ObservableList<Pay> payObservableList = FXCollections.observableArrayList();
@@ -920,6 +940,104 @@ class ClientHandler extends Thread {
         }
     }
 
+    public void updatesFoodAndDrink(ObservableList<Food_Drink> data) {
+        Database database = new Database();
+
+        for (Food_Drink food_drink : data) {
+            String name = food_drink.getName();
+            String number = food_drink.getNumber();
+            if (name == null || name.isEmpty()) {
+                System.out.println("Tên thực phẩm/đồ uống không hợp lệ");
+                continue;
+            }
+
+            try (Connection connection = database.getConection()) {
+                // Truy vấn số lượng hiện tại từ cơ sở dữ liệu
+                String query = "SELECT `Số lượng` FROM foodanddrink WHERE `Name` = ?";
+                try (PreparedStatement selectStmt = connection.prepareStatement(query)) {
+                    selectStmt.setString(1, name);
+
+                    ResultSet rs = selectStmt.executeQuery();
+                    if (rs.next()) {
+                        int currentQuantity = rs.getInt("Số lượng");
+
+                        if (currentQuantity <= 0) {
+                            System.out.println("Số lượng không hợp lệ cho: " + name);
+                            continue;
+                        }
+
+                        // Giảm số lượng và cập nhật cơ sở dữ liệu
+                        int newQuantity = currentQuantity - Integer.parseInt(number);
+                        String update = "UPDATE foodanddrink SET `Số lượng`= ? WHERE `Name` = ?";
+                        try (PreparedStatement updateStmt = connection.prepareStatement(update)) {
+                            updateStmt.setInt(1, newQuantity);
+                            updateStmt.setString(2, name);
+
+                            int row = updateStmt.executeUpdate();
+                            if (row > 0) {
+                                System.out.println("Cập nhật số lượng thành công cho: " + name);
+                            } else {
+                                System.out.println("Không tìm thấy tên để cập nhật: " + name);
+                            }
+                        }
+                    } else {
+                        System.out.println("Không tìm thấy tên trong cơ sở dữ liệu: " + name);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void updatesTicketFlims(ObservableList<TicketFlim> data) {
+        Database database = new Database();
+
+        for (TicketFlim ticketFlim : data) {
+            String name = String.valueOf(ticketFlim.getID());
+            String number = String.valueOf(ticketFlim.getSoGhe());
+            if (name == null || name.isEmpty()) {
+                continue;
+            }
+
+            try (Connection connection = database.getConection()) {
+                // Truy vấn số lượng hiện tại từ cơ sở dữ liệu
+                String query = "SELECT `số ghế` FROM `vé phim` WHERE `Mã vé` = ?";
+                try (PreparedStatement selectStmt = connection.prepareStatement(query)) {
+                    selectStmt.setString(1, name);
+
+                    ResultSet rs = selectStmt.executeQuery();
+                    if (rs.next()) {
+                        int currentQuantity = rs.getInt("số ghế");
+
+                        if (currentQuantity <= 0) {
+                            System.out.println("Số lượng không hợp lệ cho: " + name);
+                            continue;
+                        }
+
+                        // Giảm số lượng và cập nhật cơ sở dữ liệu
+                        int newQuantity = currentQuantity - Integer.parseInt(number);
+                        String update = "UPDATE `vé phim` SET `số ghế`= ? WHERE `Mã vé` = ?";
+                        try (PreparedStatement updateStmt = connection.prepareStatement(update)) {
+                            updateStmt.setInt(1, newQuantity);
+                            updateStmt.setString(2, name);
+
+                            int row = updateStmt.executeUpdate();
+                            if (row > 0) {
+                                System.out.println("Cập nhật số lượng thành công cho: " + name);
+                            } else {
+                                System.out.println("Không tìm thấy id để cập nhật: " + name);
+                            }
+                        }
+                    } else {
+                        System.out.println("Không tìm thấy id trong cơ sở dữ liệu: " + name);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public void insertTicketFlims(ObservableList<TicketFlim> data) {
         Database database = new Database();
 

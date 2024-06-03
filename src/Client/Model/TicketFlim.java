@@ -256,4 +256,46 @@ public class TicketFlim {
         }
         return ticketFlimObservableList;
     }
+
+    public static ObservableList<TicketFlim> setUpdateTicketFlim(ObservableList<TicketFlim> ticketFlimObservableList) {
+        CountDownLatch latch = new CountDownLatch(1);
+
+        new Thread(() -> {
+            Client client = new Client();
+            Socket socket = client.getSocket();
+            try (
+                    BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    PrintWriter output = new PrintWriter(socket.getOutputStream(), true)) {
+
+                System.out.println("Đang gửi yêu cầu 'UPVESGHE' tới server...");
+                output.println("UPVESGHE"); // Gửi yêu cầu tới server
+
+                for (TicketFlim ticketFlim : ticketFlimObservableList) {
+                    String response = ticketFlim.getID() + ";" + ticketFlim.getNgay() + ";" + ticketFlim.getSoGhe() + ";" +
+                            ticketFlim.getGiaVe() + ";" + ticketFlim.getTenPhim()+";"+ticketFlim.getTheLoai()+";"+ticketFlim.getPathimg();
+                    System.out.println(response);
+                    output.println(response);
+                }
+
+                output.println("END_OF_LIST"); // Kết thúc danh sách
+                String serverResponse = input.readLine();
+                System.out.println("Phản hồi từ server: " + serverResponse);
+
+            } catch (IOException e) {
+                System.out.println("Đã xảy ra lỗi: " + e.getMessage());
+                e.printStackTrace();
+            } finally {
+                latch.countDown(); // Đảm bảo CountDownLatch luôn được giải phóng
+            }
+        }).start();
+
+        try {
+            latch.await(); // Chờ cho đến khi CountDownLatch được giải phóng
+        } catch (InterruptedException e) {
+            System.out.println("Đã xảy ra lỗi khi chờ: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return ticketFlimObservableList;
+    }
+
 }

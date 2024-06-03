@@ -487,6 +487,11 @@ public class Ticket_Book implements Initializable {
             Pay pay = new Pay("",Login_custom.user,String.valueOf(total),movie.getTenPhim(),"");
             payObservableList.add(pay);
             Pay.setBuyMovie(payObservableList);
+            ObservableList<TicketFlim> ticketFlimObservableList = FXCollections.observableArrayList();
+            TicketFlim ticketFlim = new TicketFlim(movie.getID(),"s",qty1+qty2,"da","dá","adssad","sadsa");
+            ticketFlimObservableList.add(ticketFlim);
+            TicketFlim.setUpdateTicketFlim(ticketFlimObservableList);
+
             showPay();
         } else {
             showAlert(Alert.AlertType.ERROR,"Thông báo","Chưa thành công");
@@ -509,9 +514,9 @@ public class Ticket_Book implements Initializable {
         spinnerValueFactory3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,20,0);
         numberSnack.setValueFactory(spinnerValueFactory3);
     }
-    private int tes;
+    private int tes,sol;
     public void getSpinerValueSanck(){
-        int sol = (int) numberSnack.getValue();
+        sol = (int) numberSnack.getValue();
          int prices = (int) (Integer.parseInt(price)* sol );
          tes = (int) (total + prices);
         System.out.println(tes);
@@ -524,6 +529,10 @@ public class Ticket_Book implements Initializable {
             Pay pay = new Pay(name,Login_custom.user,String.valueOf(total),movie.getTenPhim(),String.valueOf(tes));
             payObservableList.add(pay);
             Pay.UpBuyMovie(payObservableList);
+            ObservableList<Food_Drink> foodDrinkObservableList = FXCollections.observableArrayList();
+            Food_Drink food_drink = new Food_Drink(0,name,"ads","da",String.valueOf(sol));
+            foodDrinkObservableList.add(food_drink);
+            Food_Drink.updatesFoodAndDrink(foodDrinkObservableList);
             showPay();
         } else {
             showAlert(Alert.AlertType.ERROR,"Thông báo","Chưa thành công");
@@ -653,7 +662,7 @@ public class Ticket_Book implements Initializable {
             ma_hoa_don.setText(String.valueOf(pay.getId()));
             ma_hoa_don1.setText(pay.getTenPhim());
             ma_hoa_don11.setText(pay.getVePhim());
-            ma_hoa_don111.setText(pay.getSnack());
+            ma_hoa_don111.setText(name);
             tongtien_Pay.setText(pay.getTongTien()+"VNĐ");
             break;
         }

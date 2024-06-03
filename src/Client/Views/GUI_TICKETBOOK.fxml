@@ -405,12 +405,12 @@
                               </Label>
                               <Spinner fx:id="specialTicket" layoutX="491.0" layoutY="135.0" onMouseClicked="#getSpinerValue" prefHeight="29.0" prefWidth="95.0" />
                               <Spinner fx:id="normalticket" layoutX="491.0" layoutY="198.0" onMouseClicked="#getSpinerValue" prefHeight="30.0" prefWidth="95.0" />
-                              <Label fx:id="price_special" layoutX="668.0" layoutY="140.0" prefHeight="22.0" prefWidth="110.0" text="0.0VNĐ">
+                              <Label fx:id="price_special" layoutX="668.0" layoutY="140.0" prefHeight="22.0" prefWidth="134.0" text="0.0VNĐ">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="price_normal" layoutX="668.0" layoutY="203.0" prefHeight="22.0" prefWidth="127.0" text="0.0VNĐ">
+                              <Label fx:id="price_normal" layoutX="668.0" layoutY="203.0" prefHeight="22.0" prefWidth="141.0" text="0.0VNĐ">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="18.0" />
                                  </font>
@@ -488,7 +488,7 @@
                                     <Font name="Microsoft Sans Serif" size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="ma_hoa_don" layoutX="187.0" layoutY="55.0" prefHeight="50.0" prefWidth="166.0">
+                              <Label fx:id="ma_hoa_don" layoutX="187.0" layoutY="47.0" prefHeight="50.0" prefWidth="166.0">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="20.0" />
                                  </font>
@@ -508,7 +508,7 @@
                                     <Font name="Microsoft Sans Serif" size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="ma_hoa_don1" layoutX="189.0" layoutY="110.0" prefHeight="42.0" prefWidth="167.0">
+                              <Label fx:id="ma_hoa_don1" layoutX="175.0" layoutY="110.0" prefHeight="42.0" prefWidth="181.0" wrapText="true">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="20.0" />
                                  </font>
@@ -518,7 +518,7 @@
                                     <Font name="Microsoft Sans Serif" size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="ma_hoa_don111" layoutX="187.0" layoutY="234.0" prefHeight="42.0" prefWidth="142.0">
+                              <Label fx:id="ma_hoa_don111" layoutX="187.0" layoutY="234.0" prefHeight="42.0" prefWidth="166.0">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="20.0" />
                                  </font>

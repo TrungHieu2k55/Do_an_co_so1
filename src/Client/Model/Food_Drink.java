@@ -194,6 +194,46 @@ public class Food_Drink {
         return foodDrinkList;
     }
 
+    public static ObservableList<Food_Drink> updatesFoodAndDrink(ObservableList<Food_Drink> foodDrinkList) {
+        CountDownLatch latch = new CountDownLatch(1);
+
+        new Thread(() -> {
+            Client client = new Client();
+            Socket socket = client.getSocket();
+            try (
+                    BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    PrintWriter output = new PrintWriter(socket.getOutputStream(), true)) {
+
+                System.out.println("Đang gửi yêu cầu 'updatesFoodAndDrink' tới server...");
+                output.println("updatesFoodAndDrink"); // Gửi yêu cầu tới server
+
+                for (Food_Drink food_drink : foodDrinkList) {
+                    String response = food_drink.getId() + ";" + food_drink.getName() + ";" + food_drink.getImagePath() + ";" +
+                            food_drink.getPrice() + ";" +food_drink.getNumber() ;
+                    output.println(response);
+                }
+
+                output.println("END_OF_LIST"); // Kết thúc danh sách
+                String serverResponse = input.readLine();
+                System.out.println("Phản hồi từ server: " + serverResponse);
+
+            } catch (IOException e) {
+                System.out.println("Đã xảy ra lỗi: " + e.getMessage());
+                e.printStackTrace();
+            } finally {
+                latch.countDown(); // Đảm bảo CountDownLatch luôn được giải phóng
+            }
+        }).start();
+
+        try {
+            latch.await(); // Chờ cho đến khi CountDownLatch được giải phóng
+        } catch (InterruptedException e) {
+            System.out.println("Đã xảy ra lỗi khi chờ: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return foodDrinkList;
+    }
+
     public int getId() {
         return Id;
     }
