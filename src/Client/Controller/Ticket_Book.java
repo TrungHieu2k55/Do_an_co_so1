@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -672,4 +673,83 @@ public class Ticket_Book implements Initializable {
         Pay.UpPay(payObservableList);
         showAlert(Alert.AlertType.INFORMATION,"Thông báo","Thanh toán thành công vào lúc "+formattedDateTime);
     }
+
+    @FXML
+    private TextField timKiem_trchu;
+    public void timKiem_TrChu() {
+        ObservableList<Flim> flimObservableList = Flim.getFlimListFromServer();
+
+        // Lấy văn bản tìm kiếm và chuyển đổi sang chữ thường
+        String searchText = timKiem_trchu.getText().toLowerCase();
+        boolean found = false;
+
+        // Duyệt qua danh sách phim
+        for (Flim flim : flimObservableList) {
+            // Kiểm tra null
+            if (flim == null || flim.getTenPhim() == null || flim.getImgpate() == null) {
+                continue;
+            }
+
+            // Lấy tên phim và chuyển đổi sang chữ thường để so sánh
+            String tenPhim = flim.getTenPhim().toLowerCase();
+            System.out.println(tenPhim);
+
+            // Kiểm tra nếu tên phim chứa văn bản tìm kiếm
+            if (tenPhim.contains(searchText)) {
+                System.out.println("chào");
+                // Cập nhật giao diện người dùng với thông tin phim tìm thấy
+                label_tenphimmoinhat.setText(flim.getTenPhim());
+                File file = new File(flim.getImgpate().replace("\\", "/"));
+                Image image = new Image(file.toURI().toString());
+                img_moinhat.setImage(image);
+                content_moinhat.setText(flim.getMoTa());
+                thoiluong_phim.setText(flim.getThoiLuong());
+                found = true;
+                break; // Dừng vòng lặp sau khi tìm thấy phim phù hợp
+            }
+        }
+
+        if (!found) {
+            showAlert(Alert.AlertType.ERROR,"Thông báo","Không tìm thấy được");
+            label_tenphimmoinhat.setText("Không tìm thấy phim phù hợp");
+            img_moinhat.setImage(null);
+            content_moinhat.setText("");
+            thoiluong_phim.setText("");
+        }
+    }
+
+    @FXML
+    private TextField timkim_snack;
+    public void btn_timkim_snack(){
+        ArrayList<Food_Drink> foodDrinkList = (ArrayList<Food_Drink>) Food_Drink.getFoodDrinkListFromServer();
+        // Lấy văn bản tìm kiếm và chuyển đổi sang chữ thường
+        String searchText = timkim_snack.getText().toLowerCase();
+        boolean found = false;
+
+        for(Food_Drink food_drink : foodDrinkList){
+            if (food_drink == null || food_drink.getName() == null || food_drink.getImagePath() == null) {
+                continue;
+            }
+
+            String names = food_drink.getName().toLowerCase();
+            System.out.println(names);
+
+            if (names.contains(searchText)) {
+                System.out.println("chào");
+                title_drinkandfood.setText(food_drink.getName()+"           "+food_drink.getPrice());
+                File file = new File(food_drink.getImagePath().replace("\\", "/"));
+                Image image = new Image(file.toURI().toString());
+                img_snack.setImage(image);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            img_moinhat.setImage(null);
+            showAlert(Alert.AlertType.ERROR,"Thông báo","Không tìm thấy được");
+        }
+
+    }
+
+
 }
