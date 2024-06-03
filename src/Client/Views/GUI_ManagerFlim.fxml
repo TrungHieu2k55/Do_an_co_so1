@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="622.0" prefWidth="1199.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Manager_Flim">
+   <children>
+      <BorderPane id="background_trchu" prefHeight="622.0" prefWidth="1199.0">
+         <top>
+            <AnchorPane prefHeight="36.0" prefWidth="1008.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="38.0" prefWidth="1248.0">
+                     <children>
+                        <Button layoutX="1187.0" layoutY="2.0" minWidth="53.0" mnemonicParsing="false" onAction="#close" pickOnBounds="false" prefHeight="29.0" prefWidth="53.0" styleClass="btn_thanhthoat">
+                           <graphic>
+                              <ImageView blendMode="SRC_ATOP" fitHeight="17.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/close.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="1133.0" layoutY="2.0" minWidth="53.0" mnemonicParsing="false" onAction="#minimize" prefHeight="29.0" prefWidth="53.0" styleClass="btn_thanhthoat">
+                           <graphic>
+                              <ImageView fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/minus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="46.0" layoutY="5.0" prefHeight="24.0" prefWidth="65.0" text="Cinema">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/cinema.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="552.0" prefWidth="250.0" styleClass="hr-ngs" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="111.0" fitWidth="114.0" layoutX="70.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon/logo%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="148.0" prefHeight="34.0" prefWidth="239.0" style="-fx-background-color: #33CCCC; -fx-background-radius: 10px;" text="Admin" textFill="#611abf">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="14.0" layoutY="523.0" mnemonicParsing="false" onAction="#Back" prefHeight="38.0" prefWidth="51.0" styleClass="signout">
+                     <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="77.0" layoutY="536.0" text="Sign Out">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button id="mode_home" fx:id="btnStaff" layoutX="2.0" layoutY="253.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="246.0" styleClass="nav-btn" text="Staff">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/staff.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="mode_home" fx:id="btnFlim" layoutX="2.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="246.0" styleClass="nav-btn" text="Flim">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/mana_flim.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnDrink" layoutX="4.0" layoutY="392.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="41.0" prefWidth="242.0" styleClass="nav-btn" text="Manager Food&amp;Drinks">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="switchForm" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/fast-food.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="mode_home" fx:id="btnTicketBook" layoutX="4.0" layoutY="455.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="246.0" styleClass="nav-btn" text="TicketBook">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/ticket.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="584.0" prefWidth="922.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="pane_staff" prefHeight="582.0" prefWidth="998.0" visible="false">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="24.0" prefHeight="550.0" prefWidth="293.0" styleClass="bg-white">
+                           <children>
+                              <AnchorPane layoutX="71.0" layoutY="14.0" prefHeight="150.0" prefWidth="146.0" styleClass="bg-white">
+                                 <children>
+                                    <ImageView fx:id="image_staff" fitHeight="150.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Button layoutX="119.0" layoutY="186.0" mnemonicParsing="false" onAction="#importImageStaff" prefHeight="30.0" prefWidth="76.0" styleClass="insert-btn" text="Đổi ảnh">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="13.0" layoutY="241.0" prefHeight="34.0" prefWidth="83.0" text="ID">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="286.0" prefHeight="34.0" prefWidth="83.0" text="Họ và tên">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="12.0" layoutY="329.0" prefHeight="34.0" prefWidth="83.0" text="Chức vụ">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="370.0" prefHeight="34.0" prefWidth="83.0" text="Phone">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="413.0" prefHeight="34.0" prefWidth="83.0" text="Ca làm">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="13.0" layoutY="454.0" prefHeight="34.0" prefWidth="83.0" text="Lương">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="id_Stafftext" layoutX="100.0" layoutY="246.0" promptText="Mã nhân viên">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="hotenStafftext" layoutX="100.0" layoutY="287.0" promptText="Họ tên">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="chucdanhstafftext" layoutX="100.0" layoutY="330.0" promptText="Chức Danh">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="phonestafftext" layoutX="100.0" layoutY="371.0" promptText="Số điện thoại">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="calamstafftext" layoutX="100.0" layoutY="414.0" promptText="Ca làm">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="luongstafftext" layoutX="100.0" layoutY="455.0" promptText="Lương">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Button layoutX="24.0" layoutY="500.0" mnemonicParsing="false" onAction="#insertStaff" prefHeight="30.0" prefWidth="62.0" styleClass="insert-btn" text="Thêm">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="115.0" layoutY="500.0" mnemonicParsing="false" onAction="#deletestaff" prefHeight="30.0" prefWidth="70.0" styleClass="delete-btn" text="Xóa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="208.0" layoutY="500.0" mnemonicParsing="false" onAction="#updateStaff" prefHeight="30.0" prefWidth="70.0" styleClass="update-btn" text="Sửa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children></AnchorPane>
+                        <AnchorPane layoutX="327.0" layoutY="22.0" prefHeight="538.0" prefWidth="645.0" styleClass="bg-white">
+                           <children>
+                              <TableView fx:id="tableStaff" layoutX="-13.0" onMouseClicked="#selectStaffList" prefHeight="538.0" prefWidth="663.0">
+                                <columns>
+                                  <TableColumn fx:id="idStaff" prefWidth="38.39996337890625" text="ID" />
+                                  <TableColumn fx:id="hoVaTen_Staff" prefWidth="146.39996337890625" text="Họ và tên" />
+                                    <TableColumn fx:id="chucvu_staff" prefWidth="96.800048828125" text="Chức vụ" />
+                                    <TableColumn fx:id="phone_staff" prefWidth="129.5999755859375" text="Phone" />
+                                    <TableColumn fx:id="calam_staff" prefWidth="114.4000244140625" text="Ca làm" />
+                                    <TableColumn fx:id="luong_staff" prefWidth="139.199951171875" text="Lương" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
+                  <AnchorPane fx:id="pane_flim" prefHeight="582.0" prefWidth="998.0" visible="false">
+                     <children>
+                        <AnchorPane layoutX="17.0" layoutY="27.0" prefHeight="534.0" prefWidth="330.0" styleClass="bg-white">
+                           <children>
+                              <AnchorPane layoutX="104.0" layoutY="14.0" prefHeight="122.0" prefWidth="122.0" styleClass="bg-white">
+                                 <children>
+                                    <ImageView fx:id="img_flim" fitHeight="123.0" fitWidth="123.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Button layoutX="132.0" layoutY="150.0" mnemonicParsing="false" onAction="#importImageFlim" styleClass="insert-btn" text="Đổi ảnh">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="11.0" layoutY="186.0" prefHeight="34.0" prefWidth="71.0" text="ID">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="2.0" layoutY="232.0" prefHeight="34.0" prefWidth="60.0" text="Đạo diễn">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="3.0" layoutY="275.0" prefHeight="34.0" prefWidth="118.0" text="Ngày khởi chiếu">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="146.0" layoutY="185.0" prefHeight="34.0" prefWidth="70.0" text="Tên phim">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="168.0" layoutY="232.0" prefHeight="34.0" prefWidth="70.0" text="Giá vé">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="41.0" layoutY="355.0" prefHeight="34.0" prefWidth="72.0" text="Thể loại">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="text_mota" layoutX="16.0" layoutY="427.0" prefHeight="47.0" prefWidth="298.0" promptText="Nội dung" />
+                              <TextField fx:id="textid_flim" layoutX="44.0" layoutY="186.0" prefHeight="34.0" prefWidth="94.0" promptText="Mã phim" />
+                              <TextField fx:id="text_tenphim" layoutX="227.0" layoutY="186.0" prefHeight="33.0" prefWidth="96.0" promptText="Tên phim" />
+                              <TextField fx:id="text_daodien" layoutX="72.0" layoutY="232.0" prefHeight="33.0" prefWidth="96.0" />
+                              <TextField fx:id="text_giave" layoutX="223.0" layoutY="232.0" prefHeight="34.0" prefWidth="103.0" />
+                              <TextField fx:id="text_ngaykc" layoutX="117.0" layoutY="275.0" prefHeight="34.0" prefWidth="198.0" promptText="dd/MM/YYYY" />
+                              <Button layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#insertFlim" prefHeight="30.0" prefWidth="65.0" styleClass="insert-btn" text="Thêm">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="128.0" layoutY="489.0" mnemonicParsing="false" onAction="#deleteFlims" prefHeight="30.0" prefWidth="69.0" styleClass="delete-btn" text="Xóa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="241.0" layoutY="489.0" mnemonicParsing="false" onAction="#updateFlims" prefHeight="30.0" prefWidth="67.0" styleClass="update-btn" text="Sửa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="17.0" layoutY="390.0" prefHeight="34.0" prefWidth="60.0" text="Mô tả">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="35.0" layoutY="316.0" prefHeight="34.0" prefWidth="74.0" text="Thời lượng">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="text_thoiluong" layoutX="116.0" layoutY="316.0" prefHeight="34.0" prefWidth="198.0" />
+                              <TextField fx:id="text_theloai" layoutX="117.0" layoutY="355.0" prefHeight="34.0" prefWidth="198.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="363.0" layoutY="22.0" prefHeight="538.0" prefWidth="620.0" styleClass="bg-white">
+                           <children>
+                              <TableView fx:id="tableFlim" layoutX="-1.0" onMouseClicked="#selectFLimsList" prefHeight="538.0" prefWidth="620.0">
+                                 <columns>
+                                    <TableColumn fx:id="id_flim" prefWidth="20.79998779296875" text="ID" />
+                                    <TableColumn fx:id="tenflim" prefWidth="94.39996337890625" text="Tên Phim" />
+                                    <TableColumn fx:id="daodienflim" prefWidth="68.79995727539062" text="Đạo diễn" />
+                                    <TableColumn fx:id="motaflim" prefWidth="74.39996337890625" text="Mô tả" />
+                                    <TableColumn fx:id="theLoaiFlim" prefWidth="78.39996337890625" text="Thể loại" />
+                                    <TableColumn fx:id="giaPhimFlim" minWidth="0.0" prefWidth="72.0" text="Giá Phim" />
+                                    <TableColumn fx:id="ngaykcflim" prefWidth="124.79986572265625" text="Ngày khởi chiếu" />
+                                    <TableColumn fx:id="thoiLuongFlim" prefWidth="81.60009765625" text="Thời lượng" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="pane_drink" prefHeight="582.0" prefWidth="998.0" visible="false">
+                     <children>
+                        <AnchorPane layoutX="17.0" layoutY="27.0" prefHeight="534.0" prefWidth="334.0" styleClass="bg-white">
+                           <children>
+                              <AnchorPane layoutX="90.0" layoutY="12.0" prefHeight="164.0" prefWidth="154.0" styleClass="bg-white">
+                                 <children>
+                                    <ImageView fx:id="img_drink" fitHeight="163.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Button layoutX="131.0" layoutY="193.0" mnemonicParsing="false" onAction="#importImageDrink" styleClass="insert-btn" text="Đổi ảnh">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="14.0" layoutY="232.0" prefHeight="34.0" prefWidth="58.0" text="ID">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="274.0" prefHeight="34.0" prefWidth="108.0" text="Đồ ăn  &amp; Nước">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="18.0" layoutY="323.0" prefHeight="34.0" prefWidth="100.0" text="Giá">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="158.0" layoutY="232.0" prefHeight="34.0" prefWidth="68.0" text="Số lượng">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onAction="#insertFoodAndDrink" prefHeight="43.0" prefWidth="83.0" styleClass="insert-btn" text="Thêm">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="124.0" layoutY="443.0" mnemonicParsing="false" onAction="#deleteFoodAndDrink" prefHeight="42.0" prefWidth="86.0" styleClass="delete-btn" text="Xóa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="233.0" layoutY="443.0" mnemonicParsing="false" onAction="#updateFoodAndDrink" prefHeight="42.0" prefWidth="84.0" styleClass="update-btn" text="Sửa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <TextField fx:id="drink_textId" layoutX="45.0" layoutY="232.0" prefHeight="34.0" prefWidth="102.0" />
+                              <TextField fx:id="drink_nametext" layoutX="130.0" layoutY="274.0" prefHeight="33.0" prefWidth="191.0" />
+                              <TextField fx:id="drink_price" layoutX="130.0" layoutY="323.0" prefHeight="33.0" prefWidth="191.0" />
+                              <TextField fx:id="drink_numbertext" layoutX="226.0" layoutY="232.0" prefHeight="33.0" prefWidth="98.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="401.0" layoutY="22.0" prefHeight="538.0" prefWidth="530.0" styleClass="bg-white">
+                           <children>
+                              <TableView fx:id="tableDrinkAndFood" layoutX="-4.0" onMouseClicked="#selectSnackList" prefHeight="538.0" prefWidth="590.0">
+                                 <columns>
+                                    <TableColumn fx:id="id_drink" prefWidth="111.99990844726562" text="ID" />
+                                    <TableColumn fx:id="name_drink" prefWidth="203.19992065429688" text="Đồ ăn và Nước" />
+                                    <TableColumn fx:id="price_drink" prefWidth="134.4000244140625" text="Giá" />
+                                    <TableColumn fx:id="number_drink" prefWidth="140.0" text="Số lượng" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="pane_ticketbook" layoutX="-1.0" layoutY="-6.0" prefHeight="598.0" prefWidth="1009.0">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="24.0" prefHeight="550.0" prefWidth="293.0" styleClass="bg-white">
+                           <children>
+                              <AnchorPane layoutX="71.0" layoutY="14.0" prefHeight="150.0" prefWidth="146.0" styleClass="bg-white">
+                                 <children>
+                                    <ImageView fx:id="image_tickets" fitHeight="150.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Button layoutX="119.0" layoutY="186.0" mnemonicParsing="false" onAction="#importImageTicket" prefHeight="30.0" prefWidth="76.0" styleClass="insert-btn" text="Đổi ảnh">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="13.0" layoutY="241.0" prefHeight="34.0" prefWidth="83.0" text="ID">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="286.0" prefHeight="34.0" prefWidth="83.0" text="Tên phim">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="12.0" layoutY="329.0" prefHeight="34.0" prefWidth="83.0" text="Thể loại">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="370.0" prefHeight="34.0" prefWidth="83.0" text="Giá vé">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="413.0" prefHeight="34.0" prefWidth="83.0" text="Số ghế">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="13.0" layoutY="454.0" prefHeight="34.0" prefWidth="83.0" text="Ngày">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="id_ticketText" layoutX="100.0" layoutY="246.0" promptText="Mã vé">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="soGhe_textticket" layoutX="100.0" layoutY="414.0" promptText="Số ghế">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="ngayX_ticketText" layoutX="100.0" layoutY="455.0" promptText="Ngày xem">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Button layoutX="24.0" layoutY="500.0" mnemonicParsing="false" onAction="#insertTicketBook" prefHeight="30.0" prefWidth="62.0" styleClass="insert-btn" text="Thêm">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="115.0" layoutY="500.0" mnemonicParsing="false" onAction="#deleteTicketBook" prefHeight="30.0" prefWidth="70.0" styleClass="delete-btn" text="Xóa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="208.0" layoutY="500.0" mnemonicParsing="false" onAction="#updateTicketBook" prefHeight="30.0" prefWidth="70.0" styleClass="update-btn" text="Sửa">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </Button>
+                              <ComboBox fx:id="tenPhimCombobox" layoutX="100.0" layoutY="290.0" prefHeight="26.0" prefWidth="171.0" promptText="Tên phim" />
+                              <ComboBox fx:id="theLoai_Combobox" layoutX="98.0" layoutY="333.0" prefHeight="26.0" prefWidth="174.0" promptText="Thể loại" />
+                              <ComboBox fx:id="giaVe_Combobox" layoutX="98.0" layoutY="374.0" prefHeight="26.0" prefWidth="174.0" promptText="Giá vé" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="327.0" layoutY="22.0" prefHeight="538.0" prefWidth="645.0" styleClass="bg-white">
+                           <children>
+                              <TableView fx:id="tableTicketBook" layoutX="-13.0" onMouseClicked="#selectTicketList" prefHeight="538.0" prefWidth="663.0">
+                                 <columns>
+                                    <TableColumn fx:id="idTicket" prefWidth="38.39996337890625" text="ID" />
+                                    <TableColumn fx:id="tenPhim_ticket" prefWidth="165.5999755859375" text="Tên Phim" />
+                                    <TableColumn fx:id="theLoai_ticket" prefWidth="99.199951171875" text="Thể loại" />
+                                    <TableColumn fx:id="giaVe_tikcet" prefWidth="142.4000244140625" text="Giá vé" />
+                                    <TableColumn fx:id="soGhe_ticket" prefWidth="89.5999755859375" text="Số ghế" />
+                                    <TableColumn fx:id="ngay_ticket" prefWidth="130.4000244140625" text="Ngày" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

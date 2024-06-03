@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="background_trchu" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Ticket_Book">
+   <children>
+      <BorderPane>
+         <top>
+            <AnchorPane prefHeight="39.0" prefWidth="1226.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="38.0" prefWidth="1264.0">
+                     <children>
+                        <Button layoutX="1209.0" layoutY="2.0" minWidth="53.0" mnemonicParsing="false" onAction="#close" pickOnBounds="false" prefHeight="29.0" prefWidth="53.0" styleClass="btn_thanhthoat">
+                           <graphic>
+                              <ImageView blendMode="SRC_ATOP" fitHeight="17.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/close.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="1150.0" layoutY="1.0" minWidth="53.0" mnemonicParsing="false" onAction="#minimize" prefHeight="29.0" prefWidth="53.0" styleClass="btn_thanhthoat">
+                           <graphic>
+                              <ImageView fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/minus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="46.0" layoutY="5.0" prefHeight="24.0" prefWidth="65.0" text="Cinema">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/cinema.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <VBox prefHeight="611.0" prefWidth="284.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="1080.0" prefWidth="284.0" styleClass="hr-ngs">
+                     <children>
+                        <Button fx:id="btnHome" layoutX="16.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchForm" pickOnBounds="false" prefHeight="54.0" prefWidth="261.0" styleClass="nav-btn" text="Home">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnBook" layoutX="17.0" layoutY="329.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="58.0" prefWidth="247.0" styleClass="nav-btn" text="Book Tickets">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/ticket.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnPay" layoutX="24.0" layoutY="496.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="64.0" prefWidth="246.0" styleClass="nav-btn" text="Pay">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/bill.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="16.0" layoutY="610.0" mnemonicParsing="false" onAction="#Back" prefHeight="38.0" prefWidth="51.0" styleClass="signout">
+                           <graphic>
+                              <ImageView fitHeight="44.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/logout.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <ImageView fitHeight="134.0" fitWidth="169.0" layoutX="70.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/logo%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="162.0" prefHeight="33.0" prefWidth="282.0" style="-fx-background-color: #33CCCC; -fx-background-radius: 10px;" text="Customer" textFill="#611abf">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnDrink" layoutX="23.0" layoutY="418.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="249.0" styleClass="nav-btn" text="Food&amp;Drinks">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fx:id="switchForm" fitHeight="23.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon/fast-food.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="106.0" layoutY="623.0" text="Sign Out">
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane prefHeight="556.0" prefWidth="982.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="mode_home" prefHeight="764.0" prefWidth="982.0" visible="false">
+                     <children>
+                        <AnchorPane layoutX="14.0" prefHeight="278.0" prefWidth="966.0">
+                           <children>
+                              <AnchorPane fx:id="pane1" layoutX="57.0" layoutY="-1.0" prefHeight="278.0" prefWidth="838.0">
+                                 <children>
+                                    <ImageView fitHeight="278.0" fitWidth="836.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Img/an-mang-lau-4-2048_1715834025308.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="pane2" layoutX="57.0" prefHeight="278.0" prefWidth="834.0">
+                                 <children>
+                                    <ImageView fitHeight="279.0" fitWidth="837.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Img/doreamon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="pane3" layoutX="51.0" prefHeight="276.0" prefWidth="838.0">
+                                 <children>
+                                    <ImageView fitHeight="276.0" fitWidth="831.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Img/HL%20CINEMA.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="14.0" layoutY="286.0" prefHeight="483.0" prefWidth="336.0" style="-fx-background-color: #888888; -fx-background-radius: 20px;">
+                           <children>
+                              <TextField layoutX="30.0" layoutY="22.0" prefHeight="33.0" prefWidth="265.0" promptText=" Type here to search" styleClass="input_seach">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Button layoutX="231.0" layoutY="26.0" mnemonicParsing="false" styleClass="btn_seach" text="Seacrch" />
+                              <Pane layoutX="29.0" layoutY="63.0" prefHeight="394.0" prefWidth="268.0" style="-fx-background-color: #CCFFCC; -fx-background-radius: 30px;">
+                                 <children>
+                                    <Label fx:id="label_tenphimmoinhat" alignment="TOP_CENTER" layoutX="10.0" layoutY="8.0" prefHeight="42.0" prefWidth="248.0" text="Doreamon" textFill="#a10000" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="img_moinhat" fitHeight="215.0" fitWidth="151.0" layoutX="61.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Img/doraemon-movie-43.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="content_moinhat" contentDisplay="TEXT_ONLY" layoutX="20.0" layoutY="276.0" prefHeight="83.0" prefWidth="232.0" text="Sẽ ra sao nếu thế giới không còn âm nhạc? Phim Điện Ảnh Doraemon: Nobita Và Bản Giao Hưởng Địa Cầu là tác phẩm điện ảnh đầu tiên về chú Mèo Ú lấy đề tài âm nhạc! Hè này, hãy cùng Doraemon, Nobita, Shizuka, Suneo và Jaian bước vào thế giới của những giai điệu diệu kì.  Để chuẩn bị cho buổi hòa nhạc ở trường, Nobita tập thổi sáo – loại nhạc cụ mà cậu dở tệ. Thích thú trước nốt &quot;No&quot; lạc quẻ của Nobita, Micca - cô bé bí ẩn đã mời Doraemon, Nobita cùng nhóm bạn đến &quot;Farre&quot;. Đó là cung điện âm nhạc tọa lạc trên một hành tinh nơi âm nhạc sẽ hóa thành năng lượng. Nhằm cứu cung điện này, Micca đang tìm kiếm &quot;virtuoso&quot; - bậc thầy âm nhạc sẽ cùng mình biểu diễn! Với bảo bối thần kì &quot;chứng chỉ chuyên viên âm nhạc&quot;, Doraemon và các bạn đã chọn nhạc cụ, cùng Micca hòa tấu. Từng bước, nhóm Doraemon khôi phục cung điện. Tuy nhiên, một vật thể sống đáng sợ sẽ xóa sổ âm nhạc khỏi thế giới đang đến gần! Trái Đất đang rơi vào nguy hiểm... ! Liệu những người bạn nhỏ có thể cứu được &quot;tương lai âm nhạc&quot; và cả địa cầu này?Xem thêm tại: https://www.galaxycine.vn/dat-ve/doraemon-movie-43-nobitas-earth-symphony/" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                    <Pane layoutX="24.0" layoutY="359.0" prefHeight="29.0" prefWidth="214.0">
+                                       <children>
+                                          <Label fx:id="thoiluong_phim" alignment="CENTER" layoutX="6.0" layoutY="7.0" prefHeight="17.0" prefWidth="189.0" style="-fx-background-color: #003300; -fx-background-radius: 20px;" text=" 115 Phút" textFill="#fafafa">
+                                             <opaqueInsets>
+                                                <Insets top="10.0" />
+                                             </opaqueInsets>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="361.0" layoutY="288.0" prefHeight="344.0" prefWidth="590.0">
+                           <children>
+                              <ScrollPane layoutY="4.0" prefHeight="474.0" prefWidth="615.0" style="-fx-background-radius: 20px;">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="606.0">
+                                       <children>
+                                          <VBox prefHeight="650.0" prefWidth="598.0">
+                                             <children>
+                                                <HBox prefHeight="658.0" prefWidth="598.0">
+                                                   <children>
+                                                      <Pane onMouseClicked="#selectnoidung1" prefHeight="314.0" prefWidth="202.0" style="-fx-background-color: #CCFFCC; -fx-background-radius: 20px;">
+                                                         <children>
+                                                            <ImageView fx:id="noidung1s" fitHeight="243.0" fitWidth="186.0" layoutX="20.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../../Img/latmat7.jpg" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label fx:id="noidung1" alignment="CENTER" layoutX="21.0" layoutY="266.0" prefHeight="41.0" prefWidth="164.0" text="Lật Mặt 7" wrapText="true">
+                                                               <font>
+                                                                  <Font name="Microsoft Sans Serif" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                         <HBox.margin>
+                                                            <Insets left="50.0" />
+                                                         </HBox.margin>
+                                                      </Pane>
+                                                      <Pane onMouseClicked="#selectnoidung2" prefHeight="298.0" prefWidth="202.0" style="-fx-background-color: #CCFFCC; -fx-background-radius: 20px;">
+                                                         <children>
+                                                            <ImageView fx:id="noidung2s" fitHeight="243.0" fitWidth="186.0" layoutX="20.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../../Img/an-mang-lau-4-500_1715833965041.jpg" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label fx:id="noidung2" alignment="CENTER" layoutX="21.0" layoutY="266.0" prefHeight="44.0" prefWidth="162.0" text="Án Mạng Lầu 4" wrapText="true">
+                                                               <font>
+                                                                  <Font name="Microsoft Sans Serif" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                         <HBox.margin>
+                                                            <Insets left="80.0" />
+                                                         </HBox.margin>
+                                                      </Pane>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="642.0" prefWidth="598.0">
+                                                   <children>
+                                                      <Pane onMouseClicked="#selectnoidung3" prefHeight="368.0" prefWidth="202.0" style="-fx-background-color: #CCFFCC; -fx-background-radius: 20px;">
+                                                         <children>
+                                                            <ImageView fx:id="noidung3s" fitHeight="243.0" fitWidth="186.0" layoutX="20.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../../Img/10-lives-500_1712291276946.jpg" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label fx:id="noidung3" alignment="CENTER" layoutX="21.0" layoutY="266.0" prefHeight="46.0" prefWidth="164.0" text="Mèo Mập Mang 10 Mạng" wrapText="true">
+                                                               <font>
+                                                                  <Font name="Microsoft Sans Serif" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                         <HBox.margin>
+                                                            <Insets left="50.0" />
+                                                         </HBox.margin>
+                                                      </Pane>
+                                                      <Pane onMouseClicked="#selectnoidung4" prefHeight="298.0" prefWidth="202.0" style="-fx-background-color: #CCFFCC; -fx-background-radius: 20px;">
+                                                         <children>
+                                                            <ImageView fx:id="noidung4s" fitHeight="243.0" fitWidth="162.0" layoutX="20.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../../Img/luyen-ngai-500_1715569977281.jpg" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label fx:id="noidung4" alignment="CENTER" layoutX="21.0" layoutY="266.0" prefHeight="47.0" prefWidth="162.0" text="Luyện Ngải: Cô Hồn Dã Quỷ" wrapText="true">
+                                                               <font>
+                                                                  <Font name="Microsoft Sans Serif" size="17.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                         <HBox.margin>
+                                                            <Insets left="80.0" />
+                                                         </HBox.margin>
+                                                      </Pane>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets top="30.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="mode_book" prefHeight="769.0" prefWidth="983.0">
+                     <children>
+                        <AnchorPane layoutX="32.0" layoutY="56.0" prefHeight="278.0" prefWidth="923.0" styleClass="bg-white">
+                           <children>
+                              <AnchorPane layoutY="-1.0" prefHeight="281.0" prefWidth="315.0" styleClass="info_card">
+                                 <children>
+                                    <Label layoutX="41.0" layoutY="31.0" prefHeight="26.0" prefWidth="86.0" text="Moive Title:">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="label_genre" layoutX="166.0" layoutY="85.0" prefHeight="36.0" prefWidth="117.0" styleClass="label_info">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lable_movieTitle" layoutX="165.0" layoutY="22.0" prefHeight="37.0" prefWidth="118.0" styleClass="label_info">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="70.0" layoutY="88.0" prefHeight="26.0" prefWidth="60.0" text="Genre:">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="75.0" layoutY="158.0" prefHeight="26.0" prefWidth="50.0" text="Date:">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="147.0" layoutY="219.0" mnemonicParsing="false" onAction="#select_moive" prefHeight="34.0" prefWidth="126.0" styleClass="insert-btn" text="Select Movie" />
+                                    <Label fx:id="label_date" layoutX="165.0" layoutY="153.0" prefHeight="35.0" prefWidth="120.0" styleClass="label_info">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <TableView fx:id="tableTicketFlim" layoutX="333.0" onMouseClicked="#selectAddMovieList" prefHeight="281.0" prefWidth="590.0">
+                                <columns>
+                                  <TableColumn fx:id="moveTitle" editable="false" minWidth="48.0" prefWidth="214.40008544921875" text=" Movie Title" />
+                                  <TableColumn fx:id="genre" editable="false" minWidth="0.0" prefWidth="185.5999755859375" text="Genre" />
+                                    <TableColumn fx:id="date" editable="false" minWidth="0.0" prefWidth="185.5999755859375" text="Date" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="23.0" layoutY="392.0" prefHeight="356.0" prefWidth="938.0" styleClass="bg-white">
+                           <children>
+                              <AnchorPane layoutX="-2.0" prefHeight="365.0" prefWidth="302.0" styleClass="info_card">
+                                 <children>
+                                    <Label fx:id="labeltitle_ticketbook" alignment="CENTER" layoutX="4.0" layoutY="251.0" prefHeight="46.0" prefWidth="294.0" wrapText="true">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="19.0" />
+                                       </font></Label>
+                                    <AnchorPane fx:id="add" focusTraversable="true" layoutX="85.0" layoutY="24.0" prefHeight="204.0" prefWidth="140.0" styleClass="bg-white">
+                                       <children>
+                                          <ImageView fx:id="addMovies_imageView" fitHeight="204.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" styleClass="bg-white" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="341.0" layoutY="17.0" prefHeight="42.0" prefWidth="224.0" text="Purchase Ticket">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="502.0" layoutY="91.0" text="Quanlity">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="663.0" layoutY="91.0" text="Price(VNĐ)">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="359.0" layoutY="140.0" prefHeight="22.0" prefWidth="121.0" text="Special Class:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="359.0" layoutY="203.0" prefHeight="22.0" prefWidth="121.0" text="Normal Class:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Spinner fx:id="specialTicket" layoutX="491.0" layoutY="135.0" onMouseClicked="#getSpinerValue" prefHeight="29.0" prefWidth="95.0" />
+                              <Spinner fx:id="normalticket" layoutX="491.0" layoutY="198.0" onMouseClicked="#getSpinerValue" prefHeight="30.0" prefWidth="95.0" />
+                              <Label fx:id="price_special" layoutX="668.0" layoutY="140.0" prefHeight="22.0" prefWidth="110.0" text="0.0VNĐ">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="price_normal" layoutX="668.0" layoutY="203.0" prefHeight="22.0" prefWidth="127.0" text="0.0VNĐ">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="723.0" layoutY="247.0" prefHeight="26.0" prefWidth="55.0" text="Total:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="moive_total" layoutX="779.0" layoutY="247.0" prefHeight="26.0" prefWidth="154.0" text="0.0VNĐ">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="760.0" layoutY="294.0" mnemonicParsing="false" onAction="#BuyMovie" prefHeight="42.0" prefWidth="96.0" styleClass="btn-buy" text="Buy" />
+                              <Button layoutX="359.0" layoutY="294.0" mnemonicParsing="false" onAction="#clearTicket" prefHeight="42.0" prefWidth="96.0" styleClass="clear-btn" text="Clear" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="mode_drink" prefHeight="769.0" prefWidth="985.0" visible="false">
+                     <children>
+                        <AnchorPane layoutX="31.0" layoutY="21.0" prefHeight="708.0" prefWidth="368.0" styleClass="bg-toi">
+                           <children>
+                              <AnchorPane layoutX="32.0" layoutY="145.0" prefHeight="510.0" prefWidth="301.0" styleClass="bg-buysnack">
+                                 <children>
+                                    <Spinner fx:id="numberSnack" layoutX="192.0" layoutY="374.0" onMouseClicked="#getSpinerValueSanck" prefHeight="29.0" prefWidth="95.0" />
+                                    <Label fx:id="title_drinkandfood" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="6.0" layoutY="319.0" prefHeight="18.0" prefWidth="289.0" text="...">
+                                       <font>
+                                          <Font name="Microsoft Sans Serif" size="15.0" />
+                                       </font></Label>
+                                    <Button layoutX="29.0" layoutY="375.0" mnemonicParsing="false" onAction="#BuySnack" prefHeight="31.0" prefWidth="95.0" styleClass="btn-buy" text="Buy" />
+                                    <AnchorPane layoutX="29.0" layoutY="42.0" prefHeight="247.0" prefWidth="242.0" styleClass="bg-white">
+                                       <children>
+                                          <ImageView fx:id="img_snack" fitHeight="261.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children></AnchorPane>
+                              <Label alignment="CENTER" layoutY="1.0" prefHeight="58.0" prefWidth="367.0" text="Buy Snack" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="34.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="50.0" layoutY="70.0" prefHeight="33.0" prefWidth="267.0" promptText="Type here to search" styleClass="text-input">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </TextField>
+                              <Button layoutX="253.0" layoutY="70.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="64.0" text="Search">
+                                 <styleClass>
+                                    <String fx:value="text-input" />
+                                    <String fx:value="input_seach" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="pane_snack" accessibleRole="COMBO_BOX" layoutX="450.4" layoutY="23.2" prefHeight="708.0" prefWidth="476.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="23.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="mode_pay" layoutX="273.0" layoutY="63.0" prefHeight="642.0" prefWidth="426.0" visible="false">
+                     <styleClass>
+                        <String fx:value="bg-white" />
+                        <String fx:value="bg-toi" />
+                     </styleClass>
+                     <children>
+                        <Label alignment="CENTER" layoutX="-3.0" prefHeight="86.0" prefWidth="430.0" text="Bill" textFill="#892929">
+                           <font>
+                              <Font name="Berlin Sans FB" size="39.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="30.0" layoutY="116.0" prefHeight="434.0" prefWidth="367.0" styleClass="bg-white">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="51.0" prefHeight="42.0" prefWidth="123.0" text="Mã hóa đơn:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="ma_hoa_don" layoutX="187.0" layoutY="55.0" prefHeight="50.0" prefWidth="166.0">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="39.0" layoutY="112.0" prefHeight="42.0" prefWidth="124.0" text="Tên Phim:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="41.0" layoutY="171.0" prefHeight="42.0" prefWidth="121.0" text="Tiền vé phim:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="36.0" layoutY="232.0" prefHeight="42.0" prefWidth="137.0" text="Đồ ăn,nước uống:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="ma_hoa_don1" layoutX="189.0" layoutY="110.0" prefHeight="42.0" prefWidth="167.0">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="ma_hoa_don11" layoutX="175.0" layoutY="170.0" prefHeight="46.0" prefWidth="182.0" wrapText="true">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="ma_hoa_don111" layoutX="187.0" layoutY="234.0" prefHeight="42.0" prefWidth="142.0">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="37.0" layoutY="339.0" text="Tổng tiền:">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="tongtien_Pay" layoutX="189.0" layoutY="334.0" prefHeight="46.0" prefWidth="162.0">
+                                 <font>
+                                    <Font name="Microsoft Sans Serif" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Button layoutX="224.0" layoutY="572.0" mnemonicParsing="false" onAction="#thanhtoan_Pay" prefHeight="46.0" prefWidth="143.0" styleClass="btn-buy" text="Thanh toán" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
